@@ -46,10 +46,25 @@ bool push(int value) {
     newNode->next = top;
     top = newNode;
     count++;
+
+    cout << "push " << value << " sukses. (total: " << count << ")" << endl;
+    return true;
 }
 
+bool pop() {
+    if (isEmpty()) {
+        cout << "STACK KOSONG! Pop gagal." << endl;
+        return false;
+    }
+    
+    node* temp = top;
+    int value = top->data;
+    top = top->next;
+    delete temp;
+    count--;
 
+    cout << "Pop" << value << " sukses. (total: " << count << ")"
+    
+}
 
 }
-   
-
