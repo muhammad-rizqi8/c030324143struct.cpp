@@ -15,23 +15,41 @@ struct node {
 };
 
 class stack {
-private :
+private:
     node* top;
     int count;
-    const int MAX_SIZE = 5;
+    static const int MAX_SIZE = 5;
 
 public :
-    stack() {
-        top = nullptr;
-        count = 0;
-    }
+    stack() : top(nullptr), count(0) {};
+    
 
     ~stack() {
-        while (top != nullptr) {
-            node* temp = top;
-            top = top->next;
-            delete temp;
+        while (!isEmpty()) {
+            pop();
     }
-    
+}
+  
+bool isEmpty() const {
+    return top == nullptr;
+}
+
+bool isFull() const {
+    return count >= MAX_SIZE;
+} 
+bool push(int value) {
+    if (isFull()) {
+        cout << "STACK KOSONG! Pop gagal." << endl;
+        return false;
     }
-};
+    node* newNode = new node();
+    newNode->next = top;
+    top = newNode;
+    count++;
+}
+
+
+
+}
+   
+
